@@ -2,8 +2,13 @@
     (:require [reagent.core :as reagent :refer [atom]]))
 
 (defonce app-state (atom {:text "Hello world!"
-                            :home-view-active {:timeline false
+                          :home-view-active {:timeline false
                                              :home "active"}
+                          :flow-view-active {
+                            :blurb "active"
+                            :overall false
+                            :reflect false
+                          }
                           :active-page {
                                         :stats false
                                         :day false}}))
@@ -32,6 +37,10 @@
 
 (defn update-home-view [app-state payload]
   (swap! app-state conj {:home-view-active {(keyword payload) "active"}})
+  (handle-scroll-func payload))
+
+(defn update-flow-view [app-state payload]
+  (swap! app-state conj {:flow-view-active {(keyword payload) "active"}})
   (handle-scroll-func payload))
 
 

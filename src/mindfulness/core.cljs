@@ -16,7 +16,7 @@
     (print @app-state)
     [Stats (:stats (:active-page @app-state))]
     [Account (:account (:active-page @app-state))]
-    ; [:p {:on-click #(handle-state-change {:type "update-state-text" :value "Test Text Here"})} "Click to update state text"]
+    [Day (:day (:active-page @app-state)) app-state]
     [:div.Period-wrapper
       [:div.Period-wrapper-inner
         [:h3.Period {:class (:home (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "home"})} "Today"]
@@ -26,9 +26,7 @@
       [Timeline (:timeline (:home-view-active @app-state))]
       [:div {:style {:clear "both"}}]
     ]
-    [Nav]
-    ; [Timeline (:timeline (:active-page @app-state))]
-    ])
+    [Nav]])
 
 (reagent/render-component [core]
                           (. js/document (getElementById "app")))

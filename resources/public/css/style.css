@@ -2,8 +2,8 @@
 /* TODO Need to make this SASS */
 :root {
   --border-color: #d2e7ff;
-  --main-white: #f4f7f9;
-  --light-blue: #d6eaff;
+  --main-white: #f7fafb;
+  --light-blue: #377df7;
 }
 
 body, html {
@@ -40,6 +40,7 @@ body.hide-scroll .Main {
   overflow: scroll;
   padding-bottom: 100px; /* needed for ads to not cover content TODO work this into a config option*/
   opacity: 0;
+  background: var(--main-white);
 }
 
 .Page.active {
@@ -99,6 +100,7 @@ body.hide-scroll .Main {
   max-width: 200px;
   border: 2px solid var(--light-blue);
   border-radius: 1rem;
+  overflow: hidden;
 }
 
 .Period-wrapper-inner h3{
@@ -109,6 +111,7 @@ body.hide-scroll .Main {
   transition: .25s;
   padding: 10px;
   width: 100%;
+  /* border-radius: .8rem; */
 }
 
 .Period.active {
@@ -126,11 +129,13 @@ body.hide-scroll .Main {
 }
 
 .Home-callout {
-  background: var(--light-blue);
+  background: rgb(55,125,247);
+  background: linear-gradient(90deg, rgba(55,125,247,1) 15%, rgba(71,136,250,1) 100%);
+  color: white;
   width: 80%;
   max-width: 250px;
   margin: 0 auto;
-  border: 1px solid var(--border-color);
+  /* border: 1px solid var(--border-color); */
   border-radius: 1rem;
   box-shadow: 0 12px 12px -8px #666;
   text-align: center;
@@ -139,4 +144,9 @@ body.hide-scroll .Main {
 
 .Home-callout svg {
   width: 50%;
+}
+
+/* ******FLOW STLYES****** */
+.Flow-wrapper {
+  position: relative;
 }
