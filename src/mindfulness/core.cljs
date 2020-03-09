@@ -2,6 +2,8 @@
     (:require [reagent.core :as reagent :refer [atom]]
               [mindfulness.views.home :refer [Home]]
               [mindfulness.views.day :refer [Day]]
+              [mindfulness.views.stats :refer [Stats]]
+              [mindfulness.views.account :refer [Account]]
               [mindfulness.views.timeline :refer [Timeline]]
               [mindfulness.services.state.global :refer [app-state]]
               [mindfulness.services.state.dispatcher :refer [handle-state-change]]
@@ -12,11 +14,13 @@
 (defn core []
   [:div.Main
     (print @app-state)
+    [Stats (:stats (:active-page @app-state))]
+    [Account (:account (:active-page @app-state))]
     ; [:p {:on-click #(handle-state-change {:type "update-state-text" :value "Test Text Here"})} "Click to update state text"]
     [:div.Period-wrapper
       [:div.Period-wrapper-inner
-        [:h3 {:on-click #(handle-state-change {:type "update-home-view" :value "home"})} "Today"]
-        [:h3 {:on-click #(handle-state-change {:type "update-home-view" :value "timeline"})}  "Past"]]]
+        [:h3.Period {:class (:home (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "home"})} "Today"]
+        [:h3.Period {:class (:timeline (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "timeline"}) :style {:text-align "right"}}  "Past"]]]
     [:div.Home-Wrapper
       [Home (:home (:home-view-active @app-state))]
       [Timeline (:timeline (:home-view-active @app-state))]

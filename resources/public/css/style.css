@@ -13,6 +13,7 @@ body, html {
   background: var(--main-white);
   width: 100%;
   height: 100%;
+  font-family: 'Nunito', sans-serif;
 }
 
 body.hide-scroll {
@@ -30,8 +31,8 @@ body.hide-scroll .Main {
 
 .Page {
   position: fixed;
-  top: calc(-105% - 100px);
-  left: 0;
+  top: 0;
+  left: 150%;
   transition: all .25s;
   background: white; /* TODO Work this into a theme config option - would be fun */
   height: 100%;
@@ -42,8 +43,9 @@ body.hide-scroll .Main {
 }
 
 .Page.active {
-  top: 0;
+  left: 0;
   opacity: 1;
+  z-index: 5
 }
 
 .SubPage {
@@ -68,6 +70,7 @@ body.hide-scroll .Main {
   justify-content: space-between;
   background: #fffef9;
   padding: 5px;
+  z-index: 10;
 }
 
 .Nav p {
@@ -96,11 +99,21 @@ body.hide-scroll .Main {
   max-width: 200px;
   border: 2px solid var(--light-blue);
   border-radius: 1rem;
-  padding: 10px 10px;
 }
 
 .Period-wrapper-inner h3{
   margin: 0;
+}
+
+.Period {
+  transition: .25s;
+  padding: 10px;
+  width: 100%;
+}
+
+.Period.active {
+  color: white;
+  background: var(--light-blue);
 }
 
 
@@ -119,7 +132,7 @@ body.hide-scroll .Main {
   margin: 0 auto;
   border: 1px solid var(--border-color);
   border-radius: 1rem;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 12px -8px #666;
   text-align: center;
   padding: 50px 15px;
 }
