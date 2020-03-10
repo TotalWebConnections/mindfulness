@@ -5,8 +5,8 @@
                           :home-view-active {:timeline false
                                              :home "active"}
                           :flow-view-active {
-                            :blurb "active"
-                            :overall false
+                            :blurb false
+                            :overall "active"
                             :reflect false
                           }
                           :active-page {
@@ -42,5 +42,3 @@
 (defn update-flow-view [app-state payload]
   (swap! app-state conj {:flow-view-active {(keyword payload) "active"}})
   (handle-scroll-func payload))
-
-

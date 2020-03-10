@@ -13,8 +13,10 @@
 
 (defn Day [active app-state]
   [:div.Page.Flow {:class active}
-    [:h2 "Today 'DATE'"]
+    [:div.Flow-header
+      [:h1 "Today 'DATE'"]
+      [:h1 "Let's Reflect On Today!"]]
     [:div.Flow-wrapper
-      [Blurb (:blurb (:flow-view-active @app-state)) advance-to-next-step]
       [Overall (:overall (:flow-view-active @app-state)) advance-to-next-step]
+      [Blurb (:blurb (:flow-view-active @app-state)) advance-to-next-step]
       [Reflect (:reflect (:flow-view-active @app-state)) advance-to-next-step]]])

@@ -2,5 +2,6 @@
 
 
 (defn Reflect [active on-advance]
-  [:div.SubPage.Reflect {:class active}
-  [:h2 "Reflect"]])
+  [:div.SubPage.SubPageFlow.Reflect {:class active}
+    [:h3 "Here's a Fun Promp To Work Through"]
+    [:textarea {:style {:resize "none"}}]])
