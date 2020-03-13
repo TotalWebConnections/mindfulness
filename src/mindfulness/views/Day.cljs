@@ -3,7 +3,8 @@
             [mindfulness.services.state.global :refer [app-state]]
             [mindfulness.components.flow.blurb :refer [Blurb]]
             [mindfulness.components.flow.overall :refer [Overall]]
-            [mindfulness.components.flow.reflect :refer [Reflect]]))
+            [mindfulness.components.flow.reflect :refer [Reflect]]
+            [mindfulness.services.persistence.storage :refer [save-day-entry]]))
 
 
 (defn advance-to-next-step [step]
@@ -15,13 +16,13 @@
 
 (defn handle-save [current-value prompt-value]
   ; (do-save (conj current-value {:prompt promp-value}))
+  (save-day-entry (conj @current-value {:reflect prompt-value}))
 )
 
 
 (defn Day [active app-state]
   (let [todays-reflection (atom {:overall nil :good "" :bad "" })] ; we don't inclue prompt as we can just conj that to the saved object at the end
     (fn [active app-state]
-      (print @todays-reflection)
       [:div.Page.Flow {:class active}
         [:div.Flow-header
           [:h1 "Today 'DATE'"]
@@ -29,4 +30,4 @@
         [:div.Flow-wrapper
           [Overall (:overall (:flow-view-active @app-state)) advance-to-next-step (partial update-reflection todays-reflection)]
           [Blurb (:blurb (:flow-view-active @app-state)) advance-to-next-step (partial update-reflection todays-reflection)]
-          [Reflect (:reflect (:flow-view-active @app-state)) advance-to-next-step (partial handle-save todays-reflection)]]])))
+          [Reflect (:reflect (:flow-view-active @app-state)) (partial handle-save todays-reflection)]]])))
