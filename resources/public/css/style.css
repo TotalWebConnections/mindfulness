@@ -82,6 +82,11 @@ button {
   z-index: 5
 }
 
+.Page-full {
+  padding-bottom: 0;
+  z-index: 20 !important;
+}
+
 .SubPage {
   position: absolute;
   top: 0;
@@ -221,4 +226,17 @@ button {
 .Flow-wrapper {
   position: relative;
   height: 80%;
+}
+
+
+/* COMPLETE PAGE */
+
+.Complete-page {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(55,125,247,1) 15%, rgba(71,136,250,1) 100%);
+  color: white;
 }

@@ -1,6 +1,7 @@
 (ns mindfulness.services.persistence.storage
   (:require [mindfulness.services.scripts.dates :refer [format-date-object]]
-            [nano-id.core :refer [nano-id]]))
+            [nano-id.core :refer [nano-id]]
+            [mindfulness.services.state.dispatcher :refer [handle-state-change]]))
 
 (def query-type "twc-mindfullness-entries")
 
@@ -14,4 +15,5 @@
   (.then (get-all-enteries) (fn [enteries]
     (let [currentStorage (js->clj enteries :keywordize-keys true)]
        (.then (.setItem (.-localforage js/window) query-type (clj->js (conj currentStorage (add-meta-data entry)))
-        (fn [value])))))))
+        (fn [value]
+          (handle-state-change {:type "update-active-view" :value "complete"}))))))))

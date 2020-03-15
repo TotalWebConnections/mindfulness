@@ -1,5 +1,6 @@
 (ns mindfulness.components.flow.overall
-  (:require [reagent.core :as reagent :refer [atom]]))
+  (:require [reagent.core :as reagent :refer [atom]]
+            [mindfulness.services.state.dispatcher :refer [handle-state-change]]))
 
 (defn update-current-value [state val]
   (reset! state val))

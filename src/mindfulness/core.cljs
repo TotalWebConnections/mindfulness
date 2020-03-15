@@ -7,7 +7,8 @@
               [mindfulness.views.timeline :refer [Timeline]]
               [mindfulness.services.state.global :refer [app-state]]
               [mindfulness.services.state.dispatcher :refer [handle-state-change]]
-              [mindfulness.components.nav :refer [Nav]]))
+              [mindfulness.components.nav :refer [Nav]]
+              [mindfulness.views.complete :refer [Complete]]))
 
 (enable-console-print!)
 
@@ -17,6 +18,7 @@
     [Stats (:stats (:active-page @app-state))]
     [Account (:account (:active-page @app-state))]
     [Day (:day (:active-page @app-state)) app-state]
+    [Complete (:complete (:active-page @app-state)) app-state]
     [:div.Period-wrapper
       [:div.Period-wrapper-inner
         [:h3.Period {:class (:home (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "home"})} "Today"]
