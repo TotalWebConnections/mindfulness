@@ -10,6 +10,7 @@
   (update-state "overall" value)
   (on-advance "blurb"))
 
+
 (defn Overall [active on-advance update-state]
   (let [current-value (atom 5)]
     (fn []

@@ -83,9 +83,55 @@ button {
 }
 
 .Page-full {
+  opacity: 0;
+  left: 0;
   padding-bottom: 0;
-  z-index: 20 !important;
+  z-index: -50 !important;
+  transition: none;
+  animation-name: fadeOutOpacity;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
 }
+
+.Page-full.active {
+	opacity: 1;
+  z-index: 5 !important;
+	animation-name: fadeInOpacity;
+	animation-timing-function: ease-in;
+	animation-duration: .5s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+  20%{
+    opacity: 0;
+  }
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOutOpacity {
+	0% {
+		opacity: 1;
+    z-index: 5;
+	}
+  20%{
+    opacity: 1;
+    z-index: 5;
+  }
+  90% {
+    opacity: 0;
+    z-index: 5;
+  }
+	100% {
+		opacity: 0;
+    z-index: -20;
+	}
+}
+
 
 .SubPage {
   position: absolute;
