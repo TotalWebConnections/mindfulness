@@ -2,6 +2,7 @@
     (:require [reagent.core :as reagent :refer [atom]]))
 
 (defonce app-state (atom {:text "Hello world!"
+                          :enteries []
                           :home-view-active {:timeline false
                                              :home "active"}
                           :flow-view-active {

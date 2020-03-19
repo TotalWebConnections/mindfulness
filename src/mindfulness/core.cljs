@@ -8,7 +8,8 @@
               [mindfulness.services.state.global :refer [app-state]]
               [mindfulness.services.state.dispatcher :refer [handle-state-change]]
               [mindfulness.components.nav :refer [Nav]]
-              [mindfulness.views.complete :refer [Complete]]))
+              [mindfulness.views.complete :refer [Complete]]
+              [mindfulness.services.persistence.storage :refer [get-all-enteries]]))
 
 (enable-console-print!)
 
@@ -22,16 +23,18 @@
     [:div.Period-wrapper
       [:div.Period-wrapper-inner
         [:h3.Period {:class (:home (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "home"})} "Today"]
-        [:h3.Period {:class (:timeline (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "timeline"}) :style {:text-align "right"}}  "Past"]]]
+        [:h3.Period {:class (:timeline (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "timeline"})}  "Past"]]]
     [:div.Home-Wrapper
-      [Home (:home (:home-view-active @app-state))]
+      [Home (:home (:home-view-active @app-state)) (:enteries @app-state)]
       [Timeline (:timeline (:home-view-active @app-state))]
       [:div {:style {:clear "both"}}]
     ]
     [Nav]])
 
-(reagent/render-component [core]
-                          (. js/document (getElementById "app")))
+(.then (get-all-enteries) (fn [enteries]
+  (swap! app-state conj {:enteries (js->clj enteries :keywordize-keys true)})
+  (reagent/render-component [core]
+                            (. js/document (getElementById "app")))))
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
