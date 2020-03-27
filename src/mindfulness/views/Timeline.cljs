@@ -3,7 +3,15 @@
 
 
 
-(defn Timeline [active]
-  (print active)
+(defn Timeline [active enteries]
+  (print enteries)
   [:div.SubPage {:class active}
-    [:h2 "I'm the timelie pages"]])
+    [:div#slider
+      (for [entry enteries]
+        [:div.Timeline__entey
+          [:h2 (:overall entry)]])]])
+
+
+
+; (let [slider (.getElementById js/document "slider")]
+;   (.slick slider))

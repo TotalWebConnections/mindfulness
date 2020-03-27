@@ -15,7 +15,7 @@
 
 (defn core []
   [:div.Main
-    (print @app-state)
+    ; (print @app-state)
     [Stats (:stats (:active-page @app-state))]
     [Account (:account (:active-page @app-state))]
     [Day (:day (:active-page @app-state)) app-state]
@@ -26,7 +26,7 @@
         [:h3.Period {:class (:timeline (:home-view-active @app-state)) :on-click #(handle-state-change {:type "update-home-view" :value "timeline"})}  "Past"]]]
     [:div.Home-Wrapper
       [Home (:home (:home-view-active @app-state)) (:enteries @app-state)]
-      [Timeline (:timeline (:home-view-active @app-state))]
+      [Timeline (:timeline (:home-view-active @app-state)) (:enteries @app-state)]
       [:div {:style {:clear "both"}}]
     ]
     [Nav]])

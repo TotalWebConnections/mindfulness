@@ -20,7 +20,6 @@
   :cljsbuild {:builds
               [{:id "dev"
                 :source-paths ["src"]
-
                 ;; The presence of a :figwheel configuration here
                 ;; will cause figwheel to inject the figwheel client
                 ;; into your build
@@ -32,6 +31,8 @@
                            :open-urls ["http://localhost:3449/index.html"]}
 
                 :compiler {:main mindfulness.core
+                           :npm-deps {:slick-carousel "*"}
+                           :install-deps true
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/mindfulness.js"
                            :output-dir "resources/public/js/compiled/out"
@@ -46,6 +47,8 @@
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/mindfulness.js"
                            :main mindfulness.core
+                           :npm-deps {:slick-carousel "*"}
+                           :install-deps true
                            :optimizations :advanced
                            :pretty-print false}}]}
 
