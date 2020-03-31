@@ -1,0 +1,16 @@
+/* Separate file as this will probably get big */
+
+#slider {
+  background: blue;
+  display: flex;
+  overflow: auto;
+}
+
+
+.Timeline__entry {
+  width: 200px;
+  height: 200px;
+  background: white;
+  border: 1px solid black;
+  position: absolute;
+}
