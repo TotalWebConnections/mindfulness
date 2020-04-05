@@ -46,6 +46,9 @@
         (if (= index (count enteries))
           output
           (let [entry (nth enteries index)]
+              (print entry)
               (recur (inc index) (conj output
                 [:div.Timeline__entry {:style {:left (generate-slide-padding index)} :key index}
-                  [:h2 (:overall entry)]])))))]])
+                  [:h2 (:date entry)]
+                  [:h3 (str "Overall "(:overall entry))]
+                  [:button "Explore"]])))))]])

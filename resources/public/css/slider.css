@@ -11,6 +11,23 @@
   width: 200px;
   height: 200px;
   background: white;
-  border: 1px solid black;
+  border: 1px solid var(--main-blue);
   position: absolute;
+  box-shadow: 0 12px 12px -8px #666;
+  border-radius: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+
+.Timeline__entry h3 {
+  padding: 10px 0;
+}
+
+.Timeline__entry button {
+  width: 80%;
+  margin: 0 auto;
 }
