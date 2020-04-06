@@ -2,8 +2,13 @@
   (:require [mindfulness.services.state.dispatcher :refer [handle-state-change]]))
 
 
+; TODO month View
+
 
 (defn Stats [active]
   [:div.Page {:class active}
     [:p {:on-click #(handle-state-change {:type "update-active-view" :value ""})}"Go Back"]
-    [:h2 "I'm a page that takes my state"]])
+    [:p "day week mont switcher"]
+    [:p "Range graph here going over the day week month"]
+    [:p "Top Positive"]
+    [:p "Top negitive"]])
