@@ -294,3 +294,43 @@ button {
   background: linear-gradient(90deg, rgba(55,125,247,1) 15%, rgba(71,136,250,1) 100%);
   color: white;
 }
+
+
+
+
+/* SUBPAGE STUFF */
+
+.SubPageFlow.Overall {
+  text-align: center;
+}
+
+.SubPageFlow.Overall input {
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+
+.SubPageFlow.Overall button {
+  margin-top: 25px;
+}
+
+
+.SubPageFlow.Blurb {
+  text-align: center;
+}
+
+.SubPageFlow.Blurb textarea {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.blurbTitle2 {
+  margin-top: 30px;
+}
+
+.SubPageFlow.Reflect {
+  text-align: center
+}
+.SubPageFlow.Reflect textarea {
+  margin-top: 35px;
+  margin-bottom: 15px;
+}

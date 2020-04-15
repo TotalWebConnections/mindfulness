@@ -15,7 +15,7 @@
   (let [current-value (atom 5)]
     (fn []
       [:div.SubPage.SubPageFlow.Overall {:class active}
-        [:h3 "Overall, How Was Your Day?"]
+        [:h2 "Overall, How Was Your Day?"]
         [:input {:type "range" :min 1 :max 10 :default-value 5 :on-change #(update-current-value current-value (-> % .-target .-value)) }]
-        [:p @current-value]
+        [:h4 (str "Today was a: " @current-value)]
         [:button {:on-click #(handle-advance on-advance update-state @current-value) } "Next Step"]])))

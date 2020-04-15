@@ -11,6 +11,6 @@
       [:div.SubPage.SubPageFlow.Blurb {:class active}
       [:h3 "Write One Positive Thing That Happened Today"]
       [:textarea {:style {:resize "none"} :on-change #(swap! blurb-values conj {:good (-> % .-target .-value)})}]
-      [:h3 "What Is One Thing You'd Change About Today?"]
+      [:h3.blurbTitle2 "What Is One Thing You'd Change About Today?"]
       [:textarea {:style {:resize "none"} :on-change #(swap! blurb-values conj {:bad (-> % .-target .-value)})}]
       [:button {:on-click #(handle-advance on-advance update-state @blurb-values)} "Next Step"]])))

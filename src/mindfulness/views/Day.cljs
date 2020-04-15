@@ -15,17 +15,28 @@
   (swap! state conj {(keyword key) value}))
 
 (defn handle-save [current-value prompt-value]
-  ; (do-save (conj current-value {:prompt promp-value}))
-  (save-day-entry (conj @current-value {:reflect prompt-value}))
-)
+  (save-day-entry (conj @current-value {:reflect prompt-value})))
 
+(def dates ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"])
+
+(defn get-number-suffix [number]
+  (cond
+    (= number 1) (str number "st")
+    (= number 2) (str number "nd")
+    (= number 3) (str number "rd")
+    :else (str number "th")))
+
+(defn generate-date-text []
+  (let [date (js/Date.)]
+    (str (nth dates (.getMonth date))" "(get-number-suffix (.getDay date)))  ))
 
 (defn Day [active app-state]
   (let [todays-reflection (atom {:overall nil :good "" :bad "" })] ; we don't inclue prompt as we can just conj that to the saved object at the end
     (fn [active app-state]
       [:div.Page.Flow {:class active}
         [:div.Flow-header
-          [:h1 "Today 'DATE'"]
+          [:h1 (str "Today: " (generate-date-text))]
           [:h1 "Let's Reflect On Today!"]]
         [:div.Flow-wrapper
           [Overall (:overall (:flow-view-active @app-state)) advance-to-next-step (partial update-reflection todays-reflection)]
