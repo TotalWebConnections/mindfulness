@@ -37,6 +37,10 @@
 (.addEventListener js/document "touchmove" handle-touch-move false)
 (.addEventListener js/document "touchend" handle-touch-end false)
 
+(defn handle-open-individual [payload]
+
+  (handle-state-change {:type "update-individual-entry" :value payload})
+  (handle-state-change {:type "update-home-view" :value "individual"}))
 
 
 (defn Timeline [active enteries]
@@ -47,9 +51,8 @@
         (if (= index (count enteries))
           output
           (let [entry (nth enteries index)]
-              (print entry)
               (recur (inc index) (conj output
                 [:div.Timeline__entry {:style {:left (generate-slide-padding index)} :key index}
                   [:h2 (:date entry)]
                   [:h3 (str "Overall "(:overall entry))]
-                  [:button "Explore"]])))))]])
+                  [:button {:on-click #(handle-open-individual entry)} "Explore"]])))))]])

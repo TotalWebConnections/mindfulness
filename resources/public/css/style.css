@@ -334,3 +334,9 @@ button {
   margin-top: 35px;
   margin-bottom: 15px;
 }
+
+/* INDIVUDAL PAGE */
+
+.Page.Individual.active {
+  left: 0;
+}

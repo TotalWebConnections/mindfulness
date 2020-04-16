@@ -3,8 +3,10 @@
 
 (defonce app-state (atom {:text "Hello world!"
                           :enteries []
+                          :individual-entry nil
                           :home-view-active {:timeline false
-                                             :home "active"}
+                                             :home "active"
+                                             :individual false}
                           :flow-view-active {
                             :blurb false
                             :overall "active"
@@ -43,3 +45,6 @@
 (defn update-flow-view [app-state payload]
   (swap! app-state conj {:flow-view-active {(keyword payload) "active"}})
   (handle-scroll-func payload))
+
+(defn update-individual-entry [app-state payload]
+  (swap! app-state conj {:individual-entry payload}))
