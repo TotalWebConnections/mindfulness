@@ -340,3 +340,24 @@ button {
 .Page.Individual.active {
   left: 0;
 }
+
+.individualHeader {
+  background: var(--light-blue);
+  color: white;
+  text-align: left;
+}
+
+.Page.Individual {
+  text-align: center;
+}
+
+.individual.body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.individual.body h4 {
+  margin: 15px 0;
+}
