@@ -4,7 +4,6 @@
 
 
 (defn Individual [active entry]
-  (print entry)
   [:div.Page.Individual {:class active}
     [:div.individualHeader
       [:p {:on-click #(handle-state-change {:type "update-home-view" :value "timeline"})}"Go Back"]]

@@ -16,7 +16,7 @@
 
 (defn core []
   [:div.Main
-    [Stats (:stats (:active-page @app-state))]
+    [Stats (:stats (:active-page @app-state)) (:enteries @app-state)]
     [Account (:account (:active-page @app-state))]
     [Day (:day (:active-page @app-state)) app-state]
     [Complete (:complete (:active-page @app-state)) app-state]

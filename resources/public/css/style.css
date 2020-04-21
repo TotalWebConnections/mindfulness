@@ -361,3 +361,9 @@ button {
 .individual.body h4 {
   margin: 15px 0;
 }
+
+.StatsHeader {
+  background: var(--light-blue);
+  color: white;
+  text-align: left;
+}
