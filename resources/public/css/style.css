@@ -214,6 +214,11 @@ button {
   overflow: hidden;
 }
 
+.Period-wrapper-inner.stats-period {
+  max-width: 400px;
+  width: 80%;
+}
+
 .Period-wrapper-inner h3{
   margin: 0;
 }
@@ -370,4 +375,6 @@ button {
 
 .Stats-wrapper {
   position: relative;
+  height: 100%;
+  overflow-x: hidden;
 }
