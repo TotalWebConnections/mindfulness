@@ -12,6 +12,11 @@
                             :overall "active"
                             :reflect false
                           }
+                          :stats-view-active {
+                            :weekly "active"
+                            :monthly false
+                            :yearly false
+                          }
                           :active-page {
                                         :stats false
                                         :day false}}))
@@ -45,6 +50,10 @@
 (defn update-flow-view [app-state payload]
   (swap! app-state conj {:flow-view-active {(keyword payload) "active"}})
   (handle-scroll-func payload))
+
+(defn update-stats-view [app-state payload]
+  (swap! app-state conj {:stats-view-active {(keyword payload) "active"}}))
+
 
 (defn update-individual-entry [app-state payload]
   (swap! app-state conj {:individual-entry payload}))
