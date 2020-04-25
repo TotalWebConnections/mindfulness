@@ -15,6 +15,6 @@
         [:h3.Period {:class (:monthly stats-views) :on-click #(handle-state-change {:type "update-stats-view" :value "monthly"})} "Monthly"]
         [:h3.Period {:class (:yearly stats-views)  :on-click #(handle-state-change {:type "update-stats-view" :value "yearly"})} "Yearly"]]]
     [:div.Stats-wrapper
-      [Weekly (:weekly stats-views)]
+      [Weekly (:weekly stats-views) enteries]
       [Monthly (:monthly stats-views)]
       [Yearly (:yearly stats-views)]]])
