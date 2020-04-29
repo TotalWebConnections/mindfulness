@@ -5,13 +5,13 @@
 
 (def graph-labels {
   :week [
+    "sun"
     "mon"
     "tue"
     "wed"
     "thu"
     "fri"
     "sat"
-    "sun"
   ] ; months are dynamic
   :year {
     "jan"
@@ -29,16 +29,23 @@
   }
 })
 
-(defn generate-chart [id]
+(defn generate-chart [id data]
   (js/setTimeout
     #(let [ctx (.getElementById js/document id)]
        (Chart. ctx (clj->js {
-        :type "line"
+        :type "line",
+        :options {
+         :scales {
+            :yAxes [{
+              :ticks {:beginAtZero true :stepSize 1 :suggestedMax 10}
+            }]
+            }
+        }
         :data {
           :labels (:week graph-labels)
           :datasets [{
-            :label "# of Votes"
-            :data [9 7 3 5 2 3]
+            :label "Daily Value"
+            :data data
           }]
         }
        }))

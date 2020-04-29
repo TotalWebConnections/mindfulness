@@ -14,7 +14,7 @@
     (let [currentDay (filter #(get-week-value dayOfWeek %) currentWeek)]
       (if (> (count currentDay) 0)
         (first currentDay)
-        "N/A"))) week))
+        {:overall "N/A"}))) week))
 
 (defn get-week []
   "returns the dates in the current week sun-mon"
@@ -30,8 +30,9 @@
   (let [week (get-week)
         currentWeek (filter #(is-date-in-week week (:date %)) enteries)
         graphValues (generate-week-values week currentWeek)]
+    (print graphValues)
     [:div.SubPage {:class active}
       [:canvas#Weekly-chart {:width "400px" :height "400px"}]
-      (generate-chart "Weekly-chart")
+      (generate-chart "Weekly-chart" (map #(:overall %) graphValues))
       [:p "top positive words"]
       [:p "top negitive words"]]))

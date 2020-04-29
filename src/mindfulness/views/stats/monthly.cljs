@@ -6,6 +6,6 @@
   [:div.SubPage {:class active}
     [:h2 "monthly page"]
     [:canvas#Monthly-chart {:width "400px" :height "400px"}]
-    (generate-chart "Monthly-chart")
+    (generate-chart "Monthly-chart" [])
     [:p "top positive words"]
     [:p "top negitive words"]])

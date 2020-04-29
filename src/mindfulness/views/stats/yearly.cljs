@@ -7,6 +7,6 @@
   [:div.SubPage {:class active}
     [:h2 "yearly page"]
     [:canvas#Yearly-chart {:width "400px" :height "400px"}]
-    (generate-chart "Yearly-chart")
+    (generate-chart "Yearly-chart" [])
     [:p "top positive words"]
     [:p "top negitive words"]])
