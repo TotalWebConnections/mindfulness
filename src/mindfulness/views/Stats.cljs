@@ -16,4 +16,4 @@
     [:div.Stats-wrapper
       [Weekly (:weekly stats-views) enteries]
       [Monthly (:monthly stats-views) enteries]
-      [Yearly (:yearly stats-views)]]])
+      [Yearly (:yearly stats-views) enteries]]])

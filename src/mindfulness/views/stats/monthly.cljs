@@ -6,6 +6,9 @@
 (defn is-date-in-month [month date]
   (some  #(= date %) month))
 
+(defn get-month-value [dateValue item]
+  (= dateValue (:date item)))
+
 (defn get-days-in-month [month year]
   (.getDate (js/Date. year month 0)))
 
@@ -23,19 +26,21 @@
         (recur (+ 1 date-offset)
                (conj dates (format-date-object (js/Date. year (- month 1) date-offset))))))))
 
-; (defn generate-month-values [month currentMonth]
-;   (map (fn [dayOfMonth]
-;     (let [currentDay (filter #(get-week-value dayOfWeek %) currentWeek)]
-;       (if (> (count currentDay) 0)
-;         (first currentDay)
-;         {:overall "N/A"}))) week))
+
+(defn generate-month-values [month currentMonth]
+  (map (fn [dayValue]
+    (let [currentDay (filter #(get-month-value dayValue %) currentMonth)]
+      (if (> (count currentDay) 0)
+        (first currentDay)
+        {:overall "N/A"}))) month))
 
 (defn Monthly [active enteries]
   (let [month (get-month)
-        currentMonth (filter #(is-date-in-month month (:date %)) enteries)]
+        currentMonth (filter #(is-date-in-month month (:date %)) enteries)
+        monthValues (generate-month-values month currentMonth)]
     [:div.SubPage {:class active}
       [:h2 "monthly page"]
       [:canvas#Monthly-chart {:width "400px" :height "400px"}]
-      (generate-chart "Monthly-chart" (map #(:overall %) currentMonth) month)
+      (generate-chart "Monthly-chart" (map #(:overall %) monthValues) :month month)
       [:p "top positive words"]
       [:p "top negitive words"]]))

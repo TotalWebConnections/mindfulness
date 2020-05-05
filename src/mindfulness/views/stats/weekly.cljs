@@ -32,4 +32,4 @@
         graphValues (generate-week-values week currentWeek)]
     [:div.SubPage {:class active}
       [:canvas#Weekly-chart {:width "400px" :height "400px"}]
-      (generate-chart "Weekly-chart" (map #(:overall %) graphValues))]))
+      (generate-chart "Weekly-chart" (map #(:overall %) graphValues) :week)]))

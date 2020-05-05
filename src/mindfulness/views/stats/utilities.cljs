@@ -12,7 +12,7 @@
     "fri"
     "sat"
   ] ; months are dynamic
-  :year {
+  :year [
     "jan"
     "feb"
     "mar"
@@ -25,11 +25,11 @@
     "oct"
     "nov"
     "dec"
-  }
+  ]
 })
 
 
-(defn generate-chart [id data & [month-fields]]
+(defn generate-chart [id data graphType & [month-fields]]
   (js/setTimeout
     #(let [ctx (.getElementById js/document id)]
        (js/Chart. ctx (clj->js {
@@ -42,7 +42,7 @@
             }
         }
         :data {
-          :labels (if month-fields month-fields (:week graph-labels))
+          :labels (if month-fields month-fields ((keyword graphType) graph-labels))
           :datasets [{
             :label "Daily Value"
             :data data

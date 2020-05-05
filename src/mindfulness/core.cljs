@@ -14,9 +14,6 @@
 
 (enable-console-print!)
 
-; (js/console.log (.-localforage js/window) )
-(js/console.log (.-Chart js/window) )
-
 (defn core []
   [:div.Main
     [Stats (:stats (:active-page @app-state)) (:enteries @app-state) (:stats-view-active @app-state)]
