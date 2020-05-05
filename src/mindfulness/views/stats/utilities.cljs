@@ -1,5 +1,4 @@
-(ns mindfulness.views.stats.utilities
-    (:require ["chart.js" :as Chart]))
+(ns mindfulness.views.stats.utilities)
 
 
 
@@ -29,10 +28,11 @@
   }
 })
 
-(defn generate-chart [id data]
+
+(defn generate-chart [id data & [month-fields]]
   (js/setTimeout
     #(let [ctx (.getElementById js/document id)]
-       (Chart. ctx (clj->js {
+       (js/Chart. ctx (clj->js {
         :type "line",
         :options {
          :scales {
@@ -42,7 +42,7 @@
             }
         }
         :data {
-          :labels (:week graph-labels)
+          :labels (if month-fields month-fields (:week graph-labels))
           :datasets [{
             :label "Daily Value"
             :data data

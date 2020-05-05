@@ -30,9 +30,6 @@
   (let [week (get-week)
         currentWeek (filter #(is-date-in-week week (:date %)) enteries)
         graphValues (generate-week-values week currentWeek)]
-    (print graphValues)
     [:div.SubPage {:class active}
       [:canvas#Weekly-chart {:width "400px" :height "400px"}]
-      (generate-chart "Weekly-chart" (map #(:overall %) graphValues))
-      [:p "top positive words"]
-      [:p "top negitive words"]]))
+      (generate-chart "Weekly-chart" (map #(:overall %) graphValues))]))

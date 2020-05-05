@@ -31,7 +31,7 @@
                            :open-urls ["http://localhost:3449/index.html"]}
 
                 :compiler {:main mindfulness.core
-                           :npm-deps {:chart.js "*"}
+                           :npm-deps {}
                            :install-deps true
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/mindfulness.js"
@@ -47,7 +47,7 @@
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/mindfulness.js"
                            :main mindfulness.core
-                           :npm-deps {:chart.js "*"}
+                           :npm-deps {}
                            :install-deps true
                            :optimizations :advanced
                            :pretty-print false}}]}

@@ -2,8 +2,7 @@
   (:require [mindfulness.services.state.dispatcher :refer [handle-state-change]]
             [mindfulness.views.stats.weekly :refer [Weekly]]
             [mindfulness.views.stats.monthly :refer [Monthly]]
-            [mindfulness.views.stats.yearly :refer [Yearly]]
-            ["chart.js" :as Chart]))
+            [mindfulness.views.stats.yearly :refer [Yearly]]))
 
 (defn Stats [active enteries stats-views]
   [:div.Page {:class active}
@@ -16,5 +15,5 @@
         [:h3.Period {:class (:yearly stats-views)  :on-click #(handle-state-change {:type "update-stats-view" :value "yearly"})} "Yearly"]]]
     [:div.Stats-wrapper
       [Weekly (:weekly stats-views) enteries]
-      [Monthly (:monthly stats-views)]
+      [Monthly (:monthly stats-views) enteries]
       [Yearly (:yearly stats-views)]]])
