@@ -32,10 +32,10 @@
 )
 
 
-
-(.addEventListener js/document "touchstart" handle-touch-start false)
-(.addEventListener js/document "touchmove" handle-touch-move false)
-(.addEventListener js/document "touchend" handle-touch-end false)
+(defn setup-listeners []
+  (.addEventListener (.getElementById js/document "Timeline") "touchstart" handle-touch-start false)
+  (.addEventListener (.getElementById js/document "Timeline") "touchmove" handle-touch-move false)
+  (.addEventListener (.getElementById js/document "Timeline") "touchend" handle-touch-end false))
 
 (defn handle-open-individual [payload]
 
@@ -44,15 +44,21 @@
 
 
 (defn Timeline [active enteries]
-  [:div.SubPage.Timeline {:class active}
-    [:div#slider {:style {:width "calc(vw * 3)"}}
-      (loop [index 0
-             output ()]
-        (if (= index (count enteries))
-          output
-          (let [entry (nth enteries index)]
-              (recur (inc index) (conj output
-                [:div.Timeline__entry {:style {:left (generate-slide-padding index)} :key index}
-                  [:h2 (:date entry)]
-                  [:h3 (str "Overall "(:overall entry))]
-                  [:button {:on-click #(handle-open-individual entry)} "Explore"]])))))]])
+  (let [listeners-set (atom false)]
+    (fn [active enteries]
+      (if (and (not @listeners-set) (= active "active")) ; sets our listeners on first visit only
+        (do
+          (setup-listeners)
+          (reset! listeners-set true)))
+      [:div.SubPage.Timeline {:class active :id "Timeline"}
+        [:div#slider {:style {:width "calc(vw * 3)"}}
+          (loop [index 0
+                 output ()]
+            (if (= index (count enteries))
+              output
+              (let [entry (nth enteries index)]
+                  (recur (inc index) (conj output
+                    [:div.Timeline__entry {:style {:left (generate-slide-padding index)} :key index}
+                      [:h2 (:date entry)]
+                      [:h3 (str "Overall "(:overall entry))]
+                      [:button {:on-click #(handle-open-individual entry)} "Explore"]])))))]])))

@@ -166,6 +166,10 @@ button {
   left: 5%;
 }
 
+.backArrow {
+  width: 24px;
+}
+
 .Nav {
   height: 40px;
   position: absolute;
@@ -300,6 +304,10 @@ button {
   color: white;
 }
 
+.Complete-page h1, .Complete-page h2, .Complete-page button {
+  margin: 10px 0;
+}
+
 
 
 
@@ -350,6 +358,7 @@ button {
   background: var(--light-blue);
   color: white;
   text-align: left;
+  padding: 5px 15px;
 }
 
 .Page.Individual {
@@ -371,6 +380,7 @@ button {
   background: var(--light-blue);
   color: white;
   text-align: left;
+  padding: 5px 15px;
 }
 
 .Stats-wrapper {
@@ -396,4 +406,11 @@ button {
   text-align: center;
   padding: 15px;
   line-height: 26px;
+}
+
+.AccountHeader {
+  background: var(--light-blue);
+  color: white;
+  text-align: left;
+  padding: 5px 15px;
 }
