@@ -378,3 +378,22 @@ button {
   height: 100%;
   overflow-x: hidden;
 }
+
+
+
+/* ACCOUNT STYLES */
+
+.Account .daily {
+  color: white;
+  background: rgb(55,125,247);
+  background: linear-gradient(90deg, rgba(55,125,247,1) 15%, rgba(71,136,250,1) 100%);
+  width: 90%;
+  max-width: 350px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 1rem;
+  box-shadow: 0 12px 12px -8px #666;
+  text-align: center;
+  padding: 15px;
+  line-height: 26px;
+}

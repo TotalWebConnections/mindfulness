@@ -35,6 +35,9 @@
        (js/Chart. ctx (clj->js {
         :type "line",
         :options {
+         :legend {
+           :display false
+         }
          :scales {
             :yAxes [{
               :ticks {:beginAtZero true :stepSize 1 :suggestedMax 10}
@@ -46,6 +49,7 @@
           :datasets [{
             :label "Daily Value"
             :data data
+            :backgroundColor "#377df7"
           }]
         }
        }))
