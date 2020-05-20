@@ -29,8 +29,6 @@
 
 (defn Yearly [active enteries]
   [:div.SubPage {:class active}
-    [:h2 "yearly page"]
+    [:h2 {:style {:padding-left "15px" :padding-bottom "15px"}} "Average By Month"]
     [:canvas#Yearly-chart {:width "400px" :height "400px"}]
-    (generate-chart "Yearly-chart" (map #(/ (:value %) (:count %)) (create-year-values enteries)) :year)
-    [:p "top positive words"]
-    [:p "top negitive words"]])
+    (generate-chart "Yearly-chart" (map #(/ (:value %) (:count %)) (create-year-values enteries)) :year)])

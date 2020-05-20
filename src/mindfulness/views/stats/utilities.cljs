@@ -28,7 +28,6 @@
   ]
 })
 
-
 (defn generate-chart [id data graphType & [month-fields]]
   (js/setTimeout
     #(let [ctx (.getElementById js/document id)]
@@ -54,7 +53,7 @@
         }
        }))
 
-  ) 1000))
+  ) 1000) nil) ; required or the timeout will return a number
 
 
 (defn get-top-positive-words [enteries])

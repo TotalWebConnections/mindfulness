@@ -39,8 +39,5 @@
         currentMonth (filter #(is-date-in-month month (:date %)) enteries)
         monthValues (generate-month-values month currentMonth)]
     [:div.SubPage {:class active}
-      [:h2 "monthly page"]
       [:canvas#Monthly-chart {:width "400px" :height "400px"}]
-      (generate-chart "Monthly-chart" (map #(:overall %) monthValues) :month month)
-      [:p "top positive words"]
-      [:p "top negitive words"]]))
+      (generate-chart "Monthly-chart" (map #(:overall %) monthValues) :month month)]))

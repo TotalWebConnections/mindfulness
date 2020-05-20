@@ -17,7 +17,7 @@
 (defn core []
   [:div.Main
     [Stats (:stats (:active-page @app-state)) (:enteries @app-state) (:stats-view-active @app-state)]
-    [Account (:account (:active-page @app-state))]
+    [Account (:account (:active-page @app-state)) (:enteries @app-state)]
     [Day (:day (:active-page @app-state)) app-state]
     [Complete (:complete (:active-page @app-state)) app-state]
     [Individual (:individual (:home-view-active @app-state)) (:individual-entry @app-state)]
