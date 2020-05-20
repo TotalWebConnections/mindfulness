@@ -15,4 +15,4 @@
       [:h4 (str "Your Overall Rating: " (:overall entry))]
       [:h4 (str "A Good Thing: " (:good entry))]
       [:h4 (str "A Not So Good Thing: " (:bad entry))]
-      [:h4 (str "Reflection: " (:reflect entry))]]])
+      [:h4 (str (:prompt (:reflect entry)) ": " (:value (:reflect entry)))]]])
