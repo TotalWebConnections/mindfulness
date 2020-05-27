@@ -11,6 +11,11 @@
   --main-blue: #397ef7;
 }
 
+@font-face {
+  font-family: "Nunito";
+  src: url("Nunito-Regular.ttf") format("truetype");
+}
+
 body, html {
   margin: 0;
   padding: 0;
