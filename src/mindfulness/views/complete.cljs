@@ -1,6 +1,12 @@
 (ns mindfulness.views.complete
-  (:require [mindfulness.services.state.dispatcher :refer [handle-state-change]]))
+  (:require [mindfulness.services.state.dispatcher :refer [handle-state-change]]
+            [mindfulness.env :refer [ADKEY]]))
 
+(defn complete-day []
+
+  (if js/AdMob
+      (.prepareInterstitial js/AdMob (clj->js {:adId ADKEY :autoShow true})))
+  (handle-state-change {:type "update-active-view" :value ""}))
 
 
 (defn Complete [active app-state]
@@ -9,4 +15,4 @@
       [:h1 "Awesome!"]
       [:h2 "Your Journal Has Been Recorded!"]
       [:h2 "Come Back Tommorow To Keep Up Your Streak"]
-      [:button {:on-click #(handle-state-change {:type "update-active-view" :value ""})} "Complete!"]]])
+      [:button {:on-click #(complete-day)} "Complete!"]]])

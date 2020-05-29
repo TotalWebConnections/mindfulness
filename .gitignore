@@ -12,3 +12,9 @@ pom.xml
 .repl
 .nrepl-port
 /node_modules
+/mobile/platforms
+/mobile/plugins
+/mobile/node_modules
+/mobile/www/js
+/mobile/www/css
+/src/mindfulness/env.cljs

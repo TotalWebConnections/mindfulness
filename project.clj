@@ -49,7 +49,7 @@
                            :main mindfulness.core
                            :npm-deps {}
                            :install-deps true
-                           :optimizations :advanced
+                           :optimizations :none
                            :pretty-print false}}]}
 
   :figwheel {;; :http-server-root "public" ;; default and assumes "resources"
