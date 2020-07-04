@@ -18,7 +18,7 @@
   (save-day-entry (conj @current-value {:reflect prompt-value})))
 
 (def dates ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"])
+            "July", "August", "September", "October", "November", "December"])
 
 (defn get-number-suffix [number]
   (cond
@@ -29,10 +29,10 @@
 
 (defn generate-date-text []
   (let [date (js/Date.)]
-    (str (nth dates (.getMonth date))" "(get-number-suffix (.getDay date)))  ))
+    (str (nth dates (.getMonth date))" "(get-number-suffix (.getDate date)))))
 
 (defn Day [active app-state]
-  (let [todays-reflection (atom {:overall nil :good "" :bad "" })] ; we don't inclue prompt as we can just conj that to the saved object at the end
+  (let [todays-reflection (atom {:overall nil :good "" :bad ""})] ; we don't inclue prompt as we can just conj that to the saved object at the end
     (fn [active app-state]
       [:div.Page.Flow {:class active}
         [:div.Flow-header

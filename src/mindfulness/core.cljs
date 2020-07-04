@@ -1,5 +1,6 @@
 (ns mindfulness.core
     (:require [reagent.core :as reagent :refer [atom]]
+              [mindfulness.components.tutorial :refer [Tutorial]]
               [mindfulness.views.home :refer [Home]]
               [mindfulness.views.day :refer [Day]]
               [mindfulness.views.stats :refer [Stats]]
@@ -16,6 +17,7 @@
 
 (defn core []
   [:div.Main
+    [Tutorial (:show-tutorial @app-state)]
     [Stats (:stats (:active-page @app-state)) (:enteries @app-state) (:stats-view-active @app-state)]
     [Account (:account (:active-page @app-state)) (:enteries @app-state)]
     [Day (:day (:active-page @app-state)) app-state]
@@ -28,17 +30,17 @@
     [:div.Home-Wrapper
       [Home (:home (:home-view-active @app-state)) (:enteries @app-state)]
       [Timeline (:timeline (:home-view-active @app-state)) (:enteries @app-state)]
-      [:div {:style {:clear "both"}}]
-    ]
+      [:div {:style {:clear "both"}}]]
     [Nav]])
 
 (.then (get-all-enteries) (fn [enteries]
-  (swap! app-state conj {:enteries (js->clj enteries :keywordize-keys true)})
-  (reagent/render-component [core]
-                            (. js/document (getElementById "app")))))
+                           (swap! app-state conj {:enteries (js->clj enteries :keywordize-keys true)
+                                                  :show-tutorial (if enteries false true)})
+                           (reagent/render-component [core]
+                                                     (. js/document (getElementById "app")))))
 
-(defn on-js-reload []
+(defn on-js-reload [])
   ;; optionally touch your app-state to force rerendering depending on
   ;; your application
   ;; (swap! app-state update-in [:__figwheel_counter] inc)
-)
+

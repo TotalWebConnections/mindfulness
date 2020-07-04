@@ -3,20 +3,21 @@
 
 (defonce app-state (atom {:text "Hello world!"
                           :enteries []
+                          :show-tutorial true
                           :individual-entry nil
                           :home-view-active {:timeline false
                                              :home "active"
                                              :individual false}
                           :flow-view-active {
-                            :blurb false
-                            :overall "active"
-                            :reflect false
-                          }
+                                             :blurb false
+                                             :overall "active"
+                                             :reflect false}
+
                           :stats-view-active {
-                            :weekly "active"
-                            :monthly false
-                            :yearly false
-                          }
+                                              :weekly "active"
+                                              :monthly false
+                                              :yearly false}
+
                           :active-page {
                                         :stats false
                                         :day false}}))
@@ -38,6 +39,9 @@
     (do
       (update-scroll-position (.-pageYOffset js/window) false)
       (js/setTimeout #(.add (.-classList (.-body js/document)) "hide-scroll") 100))))
+
+(defn hide-tutorial [app-state payload]
+  (swap! app-state conj {:show-tutorial payload}))
 
 (defn update-active-view [app-state payload]
   (swap! app-state conj {:active-page {(keyword payload) "active"}})
