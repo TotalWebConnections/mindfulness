@@ -17,4 +17,6 @@ pom.xml
 /mobile/node_modules
 /mobile/www/js
 /mobile/www/css
+/mobile/www/target
+/mobile/www/tutorial
 /src/mindfulness/env.cljs

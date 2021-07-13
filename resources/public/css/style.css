@@ -447,6 +447,12 @@ button {
   left: 150%;
   top: 0;
   transition: all .25s;
+  width: 100%;
+  text-align: center;
+}
+
+.Tutorial .slide img {
+  max-width: 100%;
 }
 
 .Tutorial .slide.active {

@@ -21,7 +21,7 @@
        (doall (map-indexed (fn [index slide]
                              (if (= index @slideNumber)
                                [:div.slide.active {:key index}
-                                [:img {:src slide :style {:width "100%"}}]]
+                                [:img {:src slide :style {:width "auto"}}]]
                                [:div.slide {:key index}
-                                [:img {:src slide :style {:width "100%"}}]])) slideImages))])))
+                                [:img {:src slide :style {:width "auto"}}]])) slideImages))])))
 
