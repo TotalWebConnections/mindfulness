@@ -14,7 +14,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-admobsdk": "^7.49.0",
-    "cordova-ios": "^5.1.1",
+    "cordova-ios": "^6.3.0",
     "cordova-plugin-admobpro": "^2.49.0",
     "cordova-plugin-extension": "^1.5.4",
     "cordova-plugin-sqlite-2": "^1.0.6"
